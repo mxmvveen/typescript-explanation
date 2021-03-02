@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "github-markdown-css": "^4.0.0",
-    "markdown-to-html": "0.0.13",
     "tsc": "^1.20150623.0"
   }
 }

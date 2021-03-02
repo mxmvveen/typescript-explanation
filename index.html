@@ -1,0 +1,195 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+<article class="markdown-body">
+<h1>
+    <a id="user-content-typescript" class="anchor" href="#typescript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TypeScript</h1>
+    <h2>
+    <a id="user-content-basics" class="anchor" href="#basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>basics</h2>
+    <p>TypeScirpt is a typed version of JavaScript that compile to native JavaScript.
+    The basic types are <code>string</code>, <code>number</code> and <code>boolean</code>.
+    You can also have an array of types. So for example an array of strings would be <code>string[]</code> or <code>Array&lt;string&gt;</code>.</p>
+    <p>Also when setting a type you can choose to give it multiple types.
+    In this example <code>age</code> can either be of type <code>string</code> or type <code>number</code>. And <code>ages</code> is an array that can hold values of types <code>number</code> and <code>string</code>.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">age</span>: <span class="pl-smi">string</span> | <span class="pl-smi">number</span> <span class="pl-c1">=</span> <span class="pl-s">'32 years old'</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">ages</span>: <span class="pl-smi">Array</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span> | <span class="pl-smi">number</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">32</span><span class="pl-kos">,</span> <span class="pl-s">'32 years old'</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+    <p>You can type variables by putting a type after the variable name.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">name</span>: <span class="pl-smi">string</span> <span class="pl-c1">=</span> <span class="pl-s">'John Doe'</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">age</span>: <span class="pl-smi">number</span> <span class="pl-c1">=</span> <span class="pl-c1">32</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">isMarried</span>: <span class="pl-smi">boolean</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">names</span>: <span class="pl-smi">string</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'John'</span><span class="pl-kos">,</span> <span class="pl-s">'Jane'</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+    <p>When using functions you can type the parameters and the return type.
+    In functions you can also make the parameters optional by putting a question mark after the parameter name.
+    In the following function <code>street</code> is required and of type <code>string</code>. <code>houseNumber</code> is optional and of type <code>number</code> and the function will return a <code>string</code>.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-en">getAddress</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">street</span>: <span class="pl-smi">string</span><span class="pl-kos">,</span> <span class="pl-s1">houseNumber</span>?: <span class="pl-smi">number</span><span class="pl-kos">)</span>: <span class="pl-smi">string</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">houseNumber</span> <span class="pl-c1">===</span> <span class="pl-c1">undefined</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">return</span> <span class="pl-s1">street</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+    
+        <span class="pl-k">return</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">street</span><span class="pl-kos">}</span></span> <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">houseNumber</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span></pre></div>
+    <p>When using an object you can use <code>type</code> or <code>interface</code> to define its values. Both type and interface names are written with a capital letter.
+    Also in both <code>type</code> and <code>interface</code> you can make properties optional by putting a questionmark after the property name.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">type</span> <span class="pl-smi">User</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">;</span>
+        <span class="pl-c1">age</span>?: <span class="pl-smi">number</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">user</span>: <span class="pl-smi">User</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'John'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">age</span>: <span class="pl-c1">32</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span></pre></div>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">interface</span> <span class="pl-smi">User</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">;</span>
+        <span class="pl-c1">age</span>?: <span class="pl-smi">number</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">user</span>: <span class="pl-smi">User</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'John'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">age</span>: <span class="pl-c1">32</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span></pre></div>
+    <p>When using <code>interface</code> you can merge properties.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">interface</span> <span class="pl-smi">User</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">;</span>
+        <span class="pl-c1">age</span>: <span class="pl-smi">number</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">interface</span> <span class="pl-smi">User</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">isMarried</span>: <span class="pl-smi">boolean</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">user</span>: <span class="pl-smi">User</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'John'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">age</span>: <span class="pl-c1">32</span><span class="pl-kos">,</span>
+        <span class="pl-c1">isMarried</span>: <span class="pl-c1">true</span>
+    <span class="pl-kos">}</span></pre></div>
+    <p><code>type</code> cannot merge properties but it can be used to define custom types.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">type</span> <span class="pl-smi">Age</span> <span class="pl-c1">=</span> <span class="pl-smi">string</span> | <span class="pl-smi">number</span><span class="pl-kos">;</span>
+    <span class="pl-k">type</span> <span class="pl-smi">UserAge</span> <span class="pl-c1">=</span> <span class="pl-smi">User</span><span class="pl-kos">[</span><span class="pl-s">'age'</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+    <h3>
+    <a id="user-content-assignment" class="anchor" href="#assignment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>assignment</h3>
+    <p>Create a typescript file and write the createUser function that is used below. Do this with specifying the parameter types and return type.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">interface</span> <span class="pl-smi">User</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">;</span>
+        <span class="pl-c1">age</span>: <span class="pl-smi">number</span><span class="pl-kos">;</span>
+        <span class="pl-c1">isMarried</span>: <span class="pl-smi">boolean</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">user</span>: <span class="pl-smi">User</span> <span class="pl-c1">=</span> <span class="pl-en">createUser</span><span class="pl-kos">(</span><span class="pl-s">'John'</span><span class="pl-kos">,</span> <span class="pl-c1">32</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <p>You can <code>npm install tsc</code> in a project direcory and run <code>tsc index.ts</code> after writing the code to compile it to JavaScript.</p>
+    <h3>
+    <a id="user-content-answer" class="anchor" href="#answer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>answer</h3>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-en">createUser</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">,</span> <span class="pl-s1">age</span>: <span class="pl-smi">number</span><span class="pl-kos">,</span> <span class="pl-s1">isMarried</span>: <span class="pl-smi">boolean</span><span class="pl-kos">)</span>: <span class="pl-smi">User</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-kos">{</span>
+            <span class="pl-c1">name</span>: <span class="pl-s1">name</span><span class="pl-kos">,</span>
+            <span class="pl-c1">age</span>: <span class="pl-s1">age</span><span class="pl-kos">,</span>
+            <span class="pl-c1">isMarried</span>: <span class="pl-s1">isMarried</span>
+        <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+    <h2>
+    <a id="user-content-generics" class="anchor" href="#generics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>generics</h2>
+    <p>With generics variable types you can write functions interfaces or types where a certain type is not of a specific type.
+    In the following example strings uses the <code>createList</code> function with <code>string</code> as input. So the return type of the function will be of type <code>string</code> array.
+    Whereas numbers uses a number and the function will have return type <code>number</code> array.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-en">createList</span> <span class="pl-c1">=</span> <span class="pl-c1">&lt;</span><span class="pl-smi">T</span><span class="pl-c1">&gt;</span><span class="pl-kos">(</span><span class="pl-s1">par</span>: <span class="pl-smi">T</span><span class="pl-kos">)</span>: <span class="pl-smi">T</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s1">par</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">strings</span>: <span class="pl-smi">string</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">createList</span><span class="pl-kos">(</span><span class="pl-s">'hello world'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">numbers</span>: <span class="pl-smi">number</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">createList</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <p>TypeScript will detect the type of this function. But you can also specify it yourself.
+    In this example the type is set to <code>string</code>. So if <code>response.data</code> is of type number TypeScript will give an error.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">dataList</span>: <span class="pl-smi">string</span> <span class="pl-c1">=</span> <span class="pl-en">createList</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span><span class="pl-kos">&gt;</span><span class="pl-kos">(</span><span class="pl-s1">response</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <p>When using it in a <code>type</code> or <code>interface</code> you can do it like this.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">type</span> <span class="pl-smi">List</span><span class="pl-c1">&lt;</span><span class="pl-smi">T</span><span class="pl-c1">&gt;</span> <span class="pl-c1">=</span> <span class="pl-smi">T</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">list</span>: <span class="pl-smi">List</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'hello'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    
+    <span class="pl-k">interface</span> <span class="pl-smi">Data</span><span class="pl-c1">&lt;</span><span class="pl-smi">T</span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">data</span>: <span class="pl-smi">T</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">data</span>: <span class="pl-smi">Data</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">data</span>: <span class="pl-s">'hello'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+    <h3>
+    <a id="user-content-assignment-1" class="anchor" href="#assignment-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>assignment</h3>
+    <p>Write the <code>getData</code> function using generics.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">interface</span> <span class="pl-smi">Data</span><span class="pl-c1">&lt;</span><span class="pl-smi">T</span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">data</span>: <span class="pl-smi">T</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">welcome</span>: <span class="pl-smi">Data</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">data</span>: <span class="pl-s">'hello'</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">welcomeData</span>: <span class="pl-smi">string</span> <span class="pl-c1">=</span> <span class="pl-en">getData</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span><span class="pl-kos">&gt;</span><span class="pl-kos">(</span><span class="pl-s1">welcome</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <h3>
+    <a id="user-content-answer-1" class="anchor" href="#answer-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>answer</h3>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-en">getData</span> <span class="pl-c1">=</span> <span class="pl-c1">&lt;</span><span class="pl-smi">T</span><span class="pl-c1">&gt;</span><span class="pl-kos">(</span><span class="pl-s1">par</span>: <span class="pl-smi">Data</span><span class="pl-kos">&lt;</span><span class="pl-smi">T</span><span class="pl-kos">&gt;</span><span class="pl-kos">)</span>: <span class="pl-smi">T</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s1">par</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+    <h3>
+    <a id="user-content-type-casting-and-type-guards" class="anchor" href="#type-casting-and-type-guards" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Type casting and type guards</h3>
+    <p>When using variables that can have different types you have to sometimes use type casting or type guards.
+    Type casting can be done using the <code>as</code> keyword or with angle bracket.</p>
+    <p>below are two examples using the following code.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">interface</span> <span class="pl-smi">Human</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">sayHello</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-smi">string</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">interface</span> <span class="pl-smi">Dog</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">bark</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-smi">string</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">const</span> <span class="pl-en">getCreature</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">isHuman</span>: <span class="pl-smi">boolean</span><span class="pl-kos">)</span>: <span class="pl-smi">Human</span> | <span class="pl-smi">Dog</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isHuman</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">return</span> <span class="pl-kos">{</span>
+                <span class="pl-en">sayHello</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">'hello'</span>
+            <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+    
+        <span class="pl-k">return</span> <span class="pl-kos">{</span>
+            <span class="pl-en">bark</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">'woof'</span>
+        <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span></pre></div>
+    <p><code>as</code> example:</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">creature</span>: <span class="pl-smi">Human</span> | <span class="pl-smi">Dog</span> <span class="pl-c1">=</span> <span class="pl-en">getCreature</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">human</span>: <span class="pl-smi">Human</span> <span class="pl-c1">=</span> <span class="pl-s1">creature</span> <span class="pl-k">as</span> <span class="pl-smi">Human</span><span class="pl-kos">;</span>
+    
+    <span class="pl-s1">human</span><span class="pl-kos">.</span><span class="pl-en">sayHello</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <p>angle bracket example:</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">creature</span>: <span class="pl-smi">Human</span> | <span class="pl-smi">Dog</span> <span class="pl-c1">=</span> <span class="pl-en">getCreature</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    
+    <span class="pl-k">const</span> <span class="pl-s1">human</span>: <span class="pl-smi">Human</span> <span class="pl-c1">=</span> <span class="pl-kos">&lt;</span><span class="pl-smi">Human</span><span class="pl-kos">&gt;</span><span class="pl-s1">creature</span><span class="pl-kos">;</span>
+    
+    <span class="pl-s1">human</span><span class="pl-kos">.</span><span class="pl-en">sayHello</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+    <p>type guards can be used using the <code>is</code> keyword in a return type of a function.</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">creature</span>: <span class="pl-smi">Human</span> | <span class="pl-smi">Dog</span> <span class="pl-c1">=</span> <span class="pl-en">getCreature</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-en">isHuman</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">creature</span>: <span class="pl-smi">Human</span> | <span class="pl-smi">Dog</span><span class="pl-kos">)</span>: <span class="pl-s1">creature</span> is <span class="pl-smi">Human</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-s">"sayHello"</span> <span class="pl-k">in</span> <span class="pl-s1">creature</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-en">isHuman</span><span class="pl-kos">(</span><span class="pl-s1">creature</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">creature</span><span class="pl-kos">.</span><span class="pl-en">sayHello</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">creature</span><span class="pl-kos">.</span><span class="pl-en">bark</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span></pre></div>
+    <p>Type guards and type casting can also be used on methods like filter on arrays.</p>
+    <p>Type casting example:</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">names</span>: <span class="pl-smi">Array</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span> | <span class="pl-smi">null</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'John'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">'Jane'</span><span class="pl-kos">,</span> <span class="pl-s">'Walter'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">nameList</span>: <span class="pl-smi">string</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">names</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-smi">string</span> | <span class="pl-smi">null</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">name</span> !== <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-k">as</span> <span class="pl-smi">string</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+    <p>Type guard example:</p>
+    <div class="highlight highlight-source-ts"><pre><span class="pl-k">const</span> <span class="pl-s1">names</span>: <span class="pl-smi">Array</span><span class="pl-kos">&lt;</span><span class="pl-smi">string</span> | <span class="pl-smi">null</span><span class="pl-kos">&gt;</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'John'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">'Jane'</span><span class="pl-kos">,</span> <span class="pl-s">'Walter'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">nameList</span>: <span class="pl-smi">string</span><span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">names</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-smi">string</span> | <span class="pl-smi">null</span><span class="pl-kos">)</span>: <span class="pl-s1">name</span> is <span class="pl-smi">string</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">name</span> !== <span class="pl-c1">null</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+</article>

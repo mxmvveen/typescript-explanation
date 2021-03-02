@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "preserveConstEnums": true
+    },
+    "include": [
+        "*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

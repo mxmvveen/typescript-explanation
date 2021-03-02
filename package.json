@@ -1,0 +1,18 @@
+{
+  "name": "typescript-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc index.ts --watch",
+    "markdown": "github-markdownb typescript.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "github-markdown-css": "^4.0.0",
+    "markdown-to-html": "0.0.13",
+    "tsc": "^1.20150623.0"
+  }
+}
